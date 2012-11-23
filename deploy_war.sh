@@ -15,7 +15,7 @@ if [[ -z "$JETTY_DIR" ]]; then
 fi
 
 echo $JETTY_DIR
-echo ${TRANSLATION_PROJECT_ROOT}
+echo $TRANSLATION_PROJECT_ROOT
 echo $HOME
 echo $WAR_DEFAULT_NAME
 echo $BROWSER
@@ -26,6 +26,8 @@ if [[ "$2" -eq "rebuild" ]]; then
 	cd ${HOME}${TRANSLATION_PROJECT_ROOT}
 	bash -c "ant war"
 	wait
+else
+	echo "no ant rebuild selected" 
 fi
 
 if [[ $WARS_NUM -ne "0" ]]; then
