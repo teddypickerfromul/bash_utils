@@ -9,14 +9,18 @@ DEFAULT_APP_URL="http://localhost:8080/translations/test/"
 
 if [[ -z "$JETTY_DIR" ]]; then
 	echo "Specify jetty home dir variable - $JETTY_DIR in your .bashrc"
-	exit
 	if [[ -z "$TRANSLATION_PROJECT_ROOT" ]]; then
 		echo "Specify project root dir variable - $TRANSLATION_PROJECT_ROOT in your .bashrc"
-		exit
 	fi
 fi
 
-cd ${HOME}${TRANSLATION_PROJECT_ROOT}
+# спасибо intellij idea
+if [[ "$3" -eq "force-variables" ]]; then
+	JETTY_DIR=$4
+	TRANSLATION_PROJECT_ROOT=$5
+fi
+
+#cd ${HOME}${TRANSLATION_PROJECT_ROOT}
 WARS_NUM=`ls ${HOME}${TRANSLATION_PROJECT_ROOT}/dist | egrep "^.+\.war$" | wc -l`
 
 if [[ "$2" -eq "rebuild" ]]; then
